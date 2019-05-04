@@ -18,6 +18,15 @@ COMPONENT('pricerange', 'min:0;max:10000;step:10;', function(self, config) {
 		}
 	};
 
+	self.configure = function(name, value) {
+		switch (name) {
+			case 'currency':
+				curr = value;
+				self.set(self.get());
+				break;
+		}
+	};
+
 	self.make = function() {
 		curr = config.currency || '{0} &euro;';
 		self.toggle('ui-pricerange');
